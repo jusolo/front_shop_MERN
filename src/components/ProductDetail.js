@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import api from "../services/api";
+import "./ProductDetail.css";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -20,7 +21,13 @@ const ProductDetail = () => {
   }, [id]);
 
   if (!product) {
-    return <p>Cargando...</p>;
+    return (
+      <div className="m-0 vh-100 row justify-content-center align-items-center">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -33,7 +40,9 @@ const ProductDetail = () => {
           <h5 className="card-title">{product.name}</h5>
           <p className="card-text text-muted">$ {product.price}</p>
           <p className="card-text">{product.description}</p>
-          <button type="button" className="w-10 me-2 btn btn-warning">Agregar al carrito</button>
+          <button type="button" className="w-10 me-2 btn btn-warning">
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </div>

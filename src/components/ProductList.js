@@ -32,6 +32,16 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
+  if (!products) {
+    return (
+      <div className="m-0 vh-100 row justify-content-center align-items-center">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       {state.isAuthenticated ? (
